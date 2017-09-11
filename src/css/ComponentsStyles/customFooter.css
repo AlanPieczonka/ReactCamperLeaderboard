@@ -1,0 +1,12 @@
+footer h4 {
+    font-weight: 300;
+    text-align: center;
+    margin: 10px 0;
+  }
+  
+  .img--githublogo {
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin: 0 auto 15px auto;
+  }
