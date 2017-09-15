@@ -8,8 +8,8 @@ export const TableRow = () =>{
         <th scope="row">1</th>
         <td>Mark</td>
         <td>Img tag</td>
-        <th>2343234</th>
-        <th>234234</th>
+        <th>2343</th>
+        <th>2342</th>
       </tr>
     );
 };

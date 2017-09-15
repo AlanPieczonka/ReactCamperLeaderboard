@@ -11,7 +11,8 @@ class Main extends Component {
     super(props);
     this.state = { 
       value: '30days',
-      days: 0 
+      days: 0,
+      selectedDaysState: '' 
   };
 
   }
@@ -29,12 +30,22 @@ class Main extends Component {
       });
   }
 
+  componentDidUpdate(prevProps, prevState){
+    console.log(this.state.selectedDaysState);
+}
+
+    handleSelect = (event) =>{
+      this.setState({
+        selectedDaysState: event.target.value
+      });
+    }
+
 
 
   render() {
     return (
       <Container>
-        <SelectInput test="gohagoha3zl"/>
+        <SelectInput onChange={this.handleSelect}/>
         <Table>
           <TableHead />
           <tbody>
