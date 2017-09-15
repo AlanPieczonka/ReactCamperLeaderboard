@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Container, Table } from 'reactstrap';
 
-import  SelectInput  from './SelectInput';
+import  { SelectInput }  from './SelectInput';
 import { TableHead } from './TableHead';
 import { TableRow } from './TableRow';
 
@@ -49,7 +49,7 @@ class Main extends Component {
         <Table>
           <TableHead />
           <tbody>
-            <TableRow />
+            <TableRow username="us"/>
           </tbody>
         </Table>
       </Container>
