@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Container, Table } from 'reactstrap';
 
 import {SelectInput} from './SelectInput';
-
+import {TableHead} from './TableHead';
 class Main extends Component{
 
     constructor(props){
@@ -35,15 +35,7 @@ class Main extends Component{
             <Container>
               <SelectInput test={"goha"}/>
             <Table>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Camper Name</th>
-                  <th>Profile picture</th>
-                  <th>Points in 30 days</th>
-                  <th>All time points</th>
-                </tr>
-              </thead>
+              <TableHead />
               <tbody>
                 <tr>
                   <th scope="row">1</th>
