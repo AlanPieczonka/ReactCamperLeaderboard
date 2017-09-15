@@ -1,54 +1,49 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Container, Table } from 'reactstrap';
 
-import {SelectInput} from './SelectInput';
-import {TableHead} from './TableHead';
-class Main extends Component{
+import  SelectInput  from './SelectInput';
+import { TableHead } from './TableHead';
+import { TableRow } from './TableRow';
 
-    constructor(props){
-      super(props);
-      this.state = {value: '30days'};
+class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      value: '30days',
+      days: 0 
+  };
 
-      this.handleChange = this.handleChange.bind(this);
-    }
-    componentDidMount(){
-        fetch('https://fcctop100.herokuapp.com/api/fccusers/top/recent')
-        .then((resp) => resp.json())
-        .then(function(data){
-            return console.log(data);
-        });
+  }
+  componentDidMount() {
+    fetch('https://fcctop100.herokuapp.com/api/fccusers/top/recent')
+      .then(resp => resp.json())
+      .then((data) =>  {
+        this.setState({ days: data });
+      });
 
-        fetch('https://fcctop100.herokuapp.com/api/fccusers/top/alltime')
-        .then((resp) => resp.json())
-        .then(function(data){
-            return console.log(data);
-        });    
-    }
+    fetch('https://fcctop100.herokuapp.com/api/fccusers/top/alltime')
+      .then(resp => resp.json())
+      .then(function(data) {
+        return console.log(data);
+      });
+  }
 
-    handleChange(event){
-      this.setState({value: event.target.value});
-    }
 
-    render(){
-        return (
-            <Container>
-              <SelectInput test={"goha"}/>
-            <Table>
-              <TableHead />
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Img tag</td>
-                  <th>2343234</th>
-                  <th>234234</th>
-                </tr>
-              </tbody>
-            </Table>
-            </Container>
-          );
-    }
+
+  render() {
+    return (
+      <Container>
+        <SelectInput test="gohagoha3zl"/>
+        <Table>
+          <TableHead />
+          <tbody>
+            <TableRow />
+          </tbody>
+        </Table>
+      </Container>
+    );
+  }
 }
 
 export default Main;
