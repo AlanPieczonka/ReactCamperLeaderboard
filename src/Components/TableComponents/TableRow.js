@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './../css/ComponentsStyles/customTableRow.css';
+import './../../css/ComponentsStyles/customTableRow.css';
 
 export const TableRow = props => {
   const { index, username, profilepicture, monthpoints, allpoints } = props; //destructuring

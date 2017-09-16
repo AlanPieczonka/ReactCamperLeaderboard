@@ -3,9 +3,9 @@ import { Container, Table } from 'reactstrap';
 
 import axios from 'axios';
 
-import { SelectInput } from './SelectInput';
-import { TableHead } from './TableHead';
-import { TableRow } from './TableRow';
+import { SelectInput } from './TableComponents/SelectInput';
+import { TableHead } from './TableComponents/TableHead';
+import { TableRow } from './TableComponents/TableRow';
 
 class Main extends Component {
 
