@@ -18,7 +18,6 @@ class Main extends Component {
   }
 
   componentDidMount() {
-
     this.loadData('https://fcctop100.herokuapp.com/api/fccusers/top/recent','monthTime');
     this.loadData('https://fcctop100.herokuapp.com/api/fccusers/top/alltime','entireTime');
   }
