@@ -11,22 +11,22 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      oneMonth: [],
-      allTime: [],
+      monthTime: [],
+      entireTime: [],
       selectedDaysState: '30days'
     };
   }
 
   componentDidMount() {
-    this.loadData('https://fcctop100.herokuapp.com/api/fccusers/top/recent','oneMonth');
-    this.loadData('https://fcctop100.herokuapp.com/api/fccusers/top/alltime','allTime');
+    this.loadData('https://fcctop100.herokuapp.com/api/fccusers/top/recent','monthTime');
+    this.loadData('https://fcctop100.herokuapp.com/api/fccusers/top/entireTime','entireTime');
   }
 
   loadData(url, stateName) {
     axios
       .get(url)
-      .then(({ data }) => {
-        this.setState({ [stateName]: data });
+      .then((resp) => {
+        this.setState({ [stateName]: resp.data });
       })
       .catch(error => {
         console.log(error);
@@ -44,31 +44,32 @@ class Main extends Component {
   };
 
   render() {
-    let testingComp;
+    
+    let properTableComponent;
     if (this.state.selectedDaysState === '30days') {
-      testingComp = this.state.oneMonth.map((row, index) => (
+      properTableComponent = this.state.monthTime.map((row, index) => (
         <TableRow
           key={index}
           index={index}
-          username={this.state.oneMonth[index].username}
-          profilepicture={this.state.oneMonth[index].img}
-          monthpoints={this.state.oneMonth[index].recent}
-          allpoints={this.state.oneMonth[index].alltime}
+          username={this.state.monthTime[index].username}
+          profilepicture={this.state.monthTime[index].img}
+          monthpoints={this.state.monthTime[index].recent}
+          allpoints={this.state.monthTime[index].alltime}
         />
       ));
     } else if (this.state.selectedDaysState === 'alltime') {
-      testingComp = this.state.allTime.map((row, index) => (
+      properTableComponent = this.state.allTime.map((row, index) => (
         <TableRow
           key={index}
           index={index}
-          username={this.state.allTime[index].username}
-          profilepicture={this.state.allTime[index].img}
-          monthpoints={this.state.allTime[index].recent}
-          allpoints={this.state.allTime[index].alltime}
+          username={this.state.entireTime[index].username}
+          profilepicture={this.state.entireTime[index].img}
+          monthpoints={this.state.entireTime[index].recent}
+          allpoints={this.state.entireTime[index].alltime}
         />
       ));
     } else {
-      testingComp = 'ERROR';
+      properTableComponent = 'ERROR';
     }
 
     return (
@@ -77,7 +78,9 @@ class Main extends Component {
           <SelectInput onChange={this.handleSelect} />
           <Table>
             <TableHead />
-            <tbody>{testingComp}</tbody>
+            <tbody>
+              {properTableComponent}
+            </tbody>
           </Table>
         </Container>
       </main>
