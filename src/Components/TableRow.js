@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import customTableRow from './../css/ComponentsStyles/customTableRow.css';
 
 export const TableRow = props => {
@@ -31,3 +31,11 @@ export const TableRow = props => {
     </tr>
   );
 };
+
+TableRow.propTypes = {
+  index: PropTypes.number,
+  username: PropTypes.string,
+  profilepicture: PropTypes.string,
+  monthpoints: PropTypes.number,
+  allpoints: PropTypes.number
+}

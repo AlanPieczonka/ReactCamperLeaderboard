@@ -18,6 +18,7 @@ class Main extends Component {
   }
 
   componentDidMount() {
+
     this.loadData('https://fcctop100.herokuapp.com/api/fccusers/top/recent','monthTime');
     this.loadData('https://fcctop100.herokuapp.com/api/fccusers/top/alltime','entireTime');
   }
@@ -25,7 +26,7 @@ class Main extends Component {
   loadData(url, stateName) {
     axios
       .get(url)
-      .then((resp) => {
+      .then(resp => {
         this.setState({ [stateName]: resp.data });
       })
       .catch(error => {
@@ -44,32 +45,32 @@ class Main extends Component {
   };
 
   render() {
-    
+    const selectedDaysState = this.state.selectedDaysState;
+    let daysToRender;
     let properTableComponent;
-    if (this.state.selectedDaysState === '30days') {
+
+    switch (selectedDaysState) {
+      case '30days':
+        daysToRender = this.state.monthTime;
+        break;
+      case 'alltime':
+        daysToRender = this.state.entireTime;
+        break;
+    }
+
+    if (daysToRender) {
       properTableComponent = this.state.monthTime.map((row, index) => (
         <TableRow
           key={index}
           index={index}
-          username={this.state.monthTime[index].username}
-          profilepicture={this.state.monthTime[index].img}
-          monthpoints={this.state.monthTime[index].recent}
-          allpoints={this.state.monthTime[index].alltime}
-        />
-      ));
-    } else if (this.state.selectedDaysState === 'alltime') {
-      properTableComponent = this.state.allTime.map((row, index) => (
-        <TableRow
-          key={index}
-          index={index}
-          username={this.state.entireTime[index].username}
-          profilepicture={this.state.entireTime[index].img}
-          monthpoints={this.state.entireTime[index].recent}
-          allpoints={this.state.entireTime[index].alltime}
+          username={daysToRender[index].username}
+          profilepicture={daysToRender[index].img}
+          monthpoints={daysToRender[index].recent}
+          allpoints={daysToRender[index].alltime}
         />
       ));
     } else {
-      properTableComponent = 'ERROR';
+        properTableComponent = <tr><th>Error</th></tr>;
     }
 
     return (
@@ -78,9 +79,7 @@ class Main extends Component {
           <SelectInput onChange={this.handleSelect} />
           <Table>
             <TableHead />
-            <tbody>
-              {properTableComponent}
-            </tbody>
+            <tbody>{properTableComponent}</tbody>
           </Table>
         </Container>
       </main>
