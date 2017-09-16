@@ -3,16 +3,17 @@ import PropTypes from 'prop-types';
 import customTableRow from './../css/ComponentsStyles/customTableRow.css';
 
 export const TableRow = props => {
+  const { index, username, profilepicture, monthpoints, allpoints } = props; //destructuring
   return (
     <tr>
-      <th scope="1">{props.index + 1}</th>
+      <th scope="1">{index + 1}</th>
       <td>
         <a
-          href={`https://www.freecodecamp.org/${props.username}`}
+          href={`https://www.freecodecamp.org/${username}`}
           target="_blank"
         >
           <img
-            src={props.profilepicture}
+            src={profilepicture}
             className="profilePicture"
             alt="Camper Profile"
           />
@@ -20,14 +21,14 @@ export const TableRow = props => {
       </td>
       <td>
         <a
-          href={`https://www.freecodecamp.org/${props.username}`}
+          href={`https://www.freecodecamp.org/${username}`}
           target="_blank"
         >
-          {props.username}
+          {username}
         </a>
       </td>
-      <td>{props.monthpoints}</td>
-      <td>{props.allpoints}</td>
+      <td>{monthpoints}</td>
+      <td>{allpoints}</td>
     </tr>
   );
 };
