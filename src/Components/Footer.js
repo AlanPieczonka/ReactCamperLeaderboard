@@ -1,6 +1,6 @@
 import React from 'react';
 
-import customHeaderCSS from './../css/ComponentsStyles/customFooter.css';
+import './../css/ComponentsStyles/customFooter.css';
 import githubLogo from './../css/img/github-logo.png';
 
 export const Footer = () => {

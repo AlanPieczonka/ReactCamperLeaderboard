@@ -1,8 +1,9 @@
 import React from 'react';
 
-import customHeaderCSS from './../css/ComponentsStyles/customHeader.css';
+import './../css/ComponentsStyles/customHeader.css';
 import reactLogo from './../css/img/react-logo.png';
 import bootstrapLogo from './../css/img/bootstrap-logo.png';
+
 export const Header = () => {
   return (
     <header>

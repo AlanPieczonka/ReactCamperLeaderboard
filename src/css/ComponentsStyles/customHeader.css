@@ -13,6 +13,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      margin: 10px auto;
   }
   
   .img--technologylogo {
@@ -20,14 +21,6 @@
     height: 50px;
     display: block;
     margin: 12px 60px 2px 20px;
-  }
-  
-  .span--react {
-    color: #61dafb;
-  }
-  
-  .span--bootstrap{
-      color: #CDBFE3;
   }
   
   @media screen and (max-width: 400px) {

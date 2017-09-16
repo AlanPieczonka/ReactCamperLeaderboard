@@ -15,7 +15,6 @@ class Main extends Component {
       selectedDaysState: '30days'
     };
   
-
   componentDidMount() {
     this.loadData('https://fcctop100.herokuapp.com/api/fccusers/top/recent','monthTime');
     this.loadData('https://fcctop100.herokuapp.com/api/fccusers/top/alltime','entireTime');
@@ -50,6 +49,8 @@ class Main extends Component {
       case 'alltime':
         daysToRender = this.state.entireTime;
         break;
+      default:
+        return;
     }
 
     if (daysToRender) {

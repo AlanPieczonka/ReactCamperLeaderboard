@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import customTableRow from './../css/ComponentsStyles/customTableRow.css';
+import './../css/ComponentsStyles/customTableRow.css';
 
 export const TableRow = props => {
   const { index, username, profilepicture, monthpoints, allpoints } = props; //destructuring
@@ -11,6 +11,7 @@ export const TableRow = props => {
         <a
           href={`https://www.freecodecamp.org/${username}`}
           target="_blank"
+          rel="noopener noreferrer"
         >
           <img
             src={profilepicture}
@@ -23,6 +24,7 @@ export const TableRow = props => {
         <a
           href={`https://www.freecodecamp.org/${username}`}
           target="_blank"
+          rel="noopener noreferrer"
         >
           {username}
         </a>

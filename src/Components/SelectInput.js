@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, Label, Input } from 'reactstrap';
 
-import customSelectInput from './../css/ComponentsStyles/customSelectInput.css';
+import  './../css/ComponentsStyles/customSelectInput.css';
 
 
 export const SelectInput = (props) => {
