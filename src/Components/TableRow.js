@@ -5,11 +5,11 @@ import { FormGroup, Label, Input } from 'reactstrap';
 export const TableRow = (props) =>{
     return(
      <tr>
-        <th scope="row">key</th>
+        <th scope="row">{props.index + 1}</th>
         <td>{props.username}</td>
         <td>Img tag</td>
-        <th>2343</th>
-        <th>2342</th>
+        <th>{props.monthpoints}</th>
+        <th>{props.allpoints}</th>
       </tr>
     );
 };
