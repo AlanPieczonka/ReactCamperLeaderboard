@@ -33,9 +33,9 @@ export const TableRow = props => {
 };
 
 TableRow.propTypes = {
-  index: PropTypes.number,
-  username: PropTypes.string,
-  profilepicture: PropTypes.string,
-  monthpoints: PropTypes.number,
-  allpoints: PropTypes.number
+  index: PropTypes.number.isRequired,
+  username: PropTypes.string.isRequired,
+  profilepicture: PropTypes.string.isRequired,
+  monthpoints: PropTypes.number.isRequired,
+  allpoints: PropTypes.number.isRequired
 }
