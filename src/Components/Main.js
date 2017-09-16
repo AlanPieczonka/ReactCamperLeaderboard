@@ -8,14 +8,13 @@ import { TableHead } from './TableHead';
 import { TableRow } from './TableRow';
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+
+    state = {
       monthTime: [],
       entireTime: [],
       selectedDaysState: '30days'
     };
-  }
+  
 
   componentDidMount() {
     this.loadData('https://fcctop100.herokuapp.com/api/fccusers/top/recent','monthTime');
@@ -31,10 +30,6 @@ class Main extends Component {
       .catch(error => {
         console.log(error);
       });
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log(this.state.selectedDaysState);
   }
 
   handleSelect = event => {
@@ -77,8 +72,12 @@ class Main extends Component {
         <Container>
           <SelectInput onChange={this.handleSelect} />
           <Table>
-            <TableHead />
-            <tbody>{properTableComponent}</tbody>
+            <thead> 
+              <TableHead />
+            </thead>
+            <tbody>
+              {properTableComponent}
+            </tbody>
           </Table>
         </Container>
       </main>
