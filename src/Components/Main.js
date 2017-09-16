@@ -44,33 +44,26 @@ class Main extends Component {
   };
 
   render() {
-    
+    let toRender;
     let properTableComponent;
     if (this.state.selectedDaysState === '30days') {
+       toRender = this.state.monthTime;
+    }
+    else if(this.state.selectedDaysState === 'alltime'){
+      toRender = this.state.entireTime;
+    }else{
+      toRender = "Error"
+    }
       properTableComponent = this.state.monthTime.map((row, index) => (
         <TableRow
           key={index}
           index={index}
-          username={this.state.monthTime[index].username}
-          profilepicture={this.state.monthTime[index].img}
-          monthpoints={this.state.monthTime[index].recent}
-          allpoints={this.state.monthTime[index].alltime}
+          username={toRender[index].username}
+          profilepicture={this.state.toRender[index].img}
+          monthpoints={this.state.toRender[index].recent}
+          allpoints={this.state.toRender[index].alltime}
         />
       ));
-    } else if (this.state.selectedDaysState === 'alltime') {
-      properTableComponent = this.state.allTime.map((row, index) => (
-        <TableRow
-          key={index}
-          index={index}
-          username={this.state.entireTime[index].username}
-          profilepicture={this.state.entireTime[index].img}
-          monthpoints={this.state.entireTime[index].recent}
-          allpoints={this.state.entireTime[index].alltime}
-        />
-      ));
-    } else {
-      properTableComponent = 'ERROR';
-    }
 
     return (
       <main>
