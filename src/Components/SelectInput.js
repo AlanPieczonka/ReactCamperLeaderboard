@@ -1,6 +1,8 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import { FormGroup, Label, Input } from 'reactstrap';
+
+import customSelectInput from './../css/ComponentsStyles/customSelectInput.css';
+
 
 export const SelectInput = (props) => {
             return(

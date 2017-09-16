@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Container, Table } from 'reactstrap';
 
 import axios from 'axios';
@@ -18,33 +17,20 @@ class Main extends Component {
     };
   }
 
-  getInitialState() {}
-
   componentDidMount() {
+    this.loadData('https://fcctop100.herokuapp.com/api/fccusers/top/recent','oneMonth');
+    this.loadData('https://fcctop100.herokuapp.com/api/fccusers/top/alltime','allTime');
+  }
+
+  loadData(url, stateName) {
     axios
-      .get('https://fcctop100.herokuapp.com/api/fccusers/top/recent')
+      .get(url)
       .then(({ data }) => {
-        this.setState({ oneMonth: data });
-        console.log(this.state.oneMonth);
-        console.log(this.state.oneMonth[0]);
-        console.log(this.state.oneMonth[0].username);
+        this.setState({ [stateName]: data });
       })
-      .catch(function(error) {
+      .catch(error => {
         console.log(error);
       });
-
-      axios
-      .get('https://fcctop100.herokuapp.com/api/fccusers/top/alltime')
-      .then(({ data }) => {
-        this.setState({ allTime: data });
-        console.log(this.state.allTime);
-        console.log(this.state.allTime[0]);
-        console.log(this.state.allTime[0].username);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -58,9 +44,9 @@ class Main extends Component {
   };
 
   render() {
-
-    if(this.state.selectedDaysState === '30days'){          
-      var testingComp =  this.state.oneMonth.map((row, index) => (
+    let testingComp;
+    if (this.state.selectedDaysState === '30days') {
+      testingComp = this.state.oneMonth.map((row, index) => (
         <TableRow
           key={index}
           index={index}
@@ -69,9 +55,9 @@ class Main extends Component {
           monthpoints={this.state.oneMonth[index].recent}
           allpoints={this.state.oneMonth[index].alltime}
         />
-      ))
-    }else if(this.state.selectedDaysState === 'alltime'){
-      var testingComp =  this.state.allTime.map((row, index) => (
+      ));
+    } else if (this.state.selectedDaysState === 'alltime') {
+      testingComp = this.state.allTime.map((row, index) => (
         <TableRow
           key={index}
           index={index}
@@ -80,19 +66,21 @@ class Main extends Component {
           monthpoints={this.state.allTime[index].recent}
           allpoints={this.state.allTime[index].alltime}
         />
-      ))
+      ));
+    } else {
+      testingComp = 'ERROR';
     }
 
     return (
-      <Container>
-        <SelectInput onChange={this.handleSelect} />
-        <Table>
-          <TableHead />
-          <tbody>   
-            {testingComp}
-          </tbody>
-        </Table>
-      </Container>
+      <main>
+        <Container>
+          <SelectInput onChange={this.handleSelect} />
+          <Table>
+            <TableHead />
+            <tbody>{testingComp}</tbody>
+          </Table>
+        </Container>
+      </main>
     );
   }
 }
